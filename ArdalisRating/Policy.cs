@@ -28,5 +28,8 @@ namespace ArdalisRating
         public decimal Deductible { get; set; }
         #endregion
 
+        #region Flood
+        public int ElevationAboveSeaLevelFleet { get; set; }
+        #endregion
     }
 }
