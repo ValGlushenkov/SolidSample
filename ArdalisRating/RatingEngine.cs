@@ -28,14 +28,7 @@ namespace ArdalisRating
             var factory = new RaterFactory();
 
             var rater = factory.Create(policy, this);
-            if(rater == null)
-            {
-                Logger.Log("Unknown policy type");
-            }
-            else
-            {
-                rater.Rate(policy);
-            }
+            rater.Rate(policy);
 
             Logger.Log("Rating completed.");
         }
