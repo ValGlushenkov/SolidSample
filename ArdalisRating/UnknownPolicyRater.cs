@@ -6,8 +6,8 @@ namespace ArdalisRating
 {
     public class UnknownPolicyRater : Rater
     {
-        public UnknownPolicyRater(RatingEngine engine, ConsoleLogger logger)
-            :base(engine, logger)
+        public UnknownPolicyRater(IRatingContext context, ConsoleLogger logger)
+            : base(context)
         {
         }
 

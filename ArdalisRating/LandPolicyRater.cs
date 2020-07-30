@@ -7,8 +7,8 @@ namespace ArdalisRating
     public class LandPolicyRater : Rater
     {
 
-        public LandPolicyRater(RatingEngine engine, ConsoleLogger logger)
-            :base(engine, logger)
+        public LandPolicyRater(IRatingContext context, ConsoleLogger logger)
+            :base(context)
         {
         }
 
@@ -26,7 +26,7 @@ namespace ArdalisRating
                 _logger.Log("Insufficient bond amount.");
                 return;
             }
-            _engine.Rating = policy.BondAmount * 0.05m;
+            _context.Rating = policy.BondAmount * 0.05m;
         }
     }
 }

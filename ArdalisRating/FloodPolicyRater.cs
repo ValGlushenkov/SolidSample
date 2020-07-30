@@ -6,8 +6,8 @@ namespace ArdalisRating
 {
     public class FloodPolicyRater : Rater
     {
-        public FloodPolicyRater(RatingEngine engine, ConsoleLogger logger)
-            : base(engine, logger)
+        public FloodPolicyRater(IRatingContext context, ConsoleLogger logger)
+            : base(context)
         {
         }
 
@@ -46,7 +46,7 @@ namespace ArdalisRating
             {
                 multiple = 1.1m;
             }
-            _engine.Rating = policy.BondAmount * 0.05m * multiple;
+            _context.Rating = policy.BondAmount * 0.05m * multiple;
         }
     }
 }
