@@ -26,7 +26,7 @@ namespace ArdalisRating
                 _logger.Log("Insufficient bond amount.");
                 return;
             }
-            _context.Rating = policy.BondAmount * 0.05m;
+            _context.UpdateRating(policy.BondAmount * 0.05m);
         }
     }
 }

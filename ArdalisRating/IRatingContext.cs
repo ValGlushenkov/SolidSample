@@ -15,6 +15,5 @@ namespace ArdalisRating
         void UpdateRating(decimal rating);
         RatingEngine Engine { get; set; }
         ConsoleLogger Logger { get; }
-        decimal Rating { get; set; }
     }
 }

@@ -46,7 +46,7 @@ namespace ArdalisRating
             {
                 multiple = 1.1m;
             }
-            _context.Rating = policy.BondAmount * 0.05m * multiple;
+            _context.UpdateRating(policy.BondAmount * 0.05m * multiple);
         }
     }
 }

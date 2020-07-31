@@ -39,10 +39,10 @@ namespace ArdalisRating
             decimal baseRate = policy.Amount * age / 200;
             if(policy.IsSmoker)
             {
-                _context.Rating = baseRate * 2;
+                _context.UpdateRating(baseRate * 2);
                 return;
             }
-            _context.Rating = baseRate;
+            _context.UpdateRating(baseRate);
         }
     }
 }

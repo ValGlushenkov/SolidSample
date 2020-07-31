@@ -9,8 +9,6 @@ namespace ArdalisRating
         public RatingEngine Engine { get; set; }
         public ConsoleLogger Logger => new ConsoleLogger();
 
-        public decimal Rating { get; set; }
-
         public Rater CreateRaterForPolicy(Policy policy, IRatingContext context)
         {
             return new RaterFactory().Create(policy, context);
