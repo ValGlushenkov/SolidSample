@@ -7,11 +7,9 @@ namespace ArdalisRating
     public class DefaultRatingContext : IRatingContext
     {
         public RatingEngine Engine { get; set; }
-        public ConsoleLogger Logger => new ConsoleLogger();
-
-        public Rater CreateRaterForPolicy(Policy policy, IRatingContext context)
+        public Rater CreateRaterForPolicy(Policy policy, IRatingUpdater ratingUpdater)
         {
-            return new RaterFactory().Create(policy, context);
+            return new RaterFactory().Create(policy, ratingUpdater);
         }
 
         public Policy GetPolicyFromJsonString(string policyJson)

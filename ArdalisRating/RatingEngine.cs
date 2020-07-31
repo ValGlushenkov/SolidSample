@@ -10,6 +10,7 @@ namespace ArdalisRating
     public class RatingEngine
     {
         public IRatingContext Context { get; set; } = new DefaultRatingContext();
+        public IRatingUpdater RatingUpdater { get; set; } = new RatingUpdater();
         public decimal Rating { get; set; }
         public RatingEngine()
         {
@@ -29,7 +30,7 @@ namespace ArdalisRating
 
             var factory = new RaterFactory();
 
-            var rater = factory.Create(policy, Context);
+            var rater = factory.Create(policy, RatingUpdater);
             rater.Rate(policy);
 
             Context.Log("Rating completed.");

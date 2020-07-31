@@ -4,16 +4,13 @@ using System.Text;
 
 namespace ArdalisRating
 {
-    public interface IRatingContext
+    public interface IRatingContext : ILogger
     {
-        void Log(string message);
         string LoadPolicyFromFile();
         string LoadPolicyFromURI(string uri);
         Policy GetPolicyFromJsonString(string policyJson);
         Policy GetPolicyFromXmlString(string policyXml);
-        Rater CreateRaterForPolicy(Policy policy, IRatingContext context);
-        void UpdateRating(decimal rating);
+        Rater CreateRaterForPolicy(Policy policy, IRatingUpdater ratingUpdater);
         RatingEngine Engine { get; set; }
-        ConsoleLogger Logger { get; }
     }
 }
