@@ -8,9 +8,8 @@ namespace ArdalisRating
     {
         string LoadPolicyFromFile();
         string LoadPolicyFromURI(string uri);
-        Policy GetPolicyFromJsonString(string policyJson);
         Policy GetPolicyFromXmlString(string policyXml);
-        Rater CreateRaterForPolicy(Policy policy, IRatingUpdater ratingUpdater);
+        Rater CreateRaterForPolicy(Policy policy, ILogger logger);
         RatingEngine Engine { get; set; }
     }
 }

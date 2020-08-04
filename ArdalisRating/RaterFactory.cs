@@ -6,18 +6,24 @@ namespace ArdalisRating
 {
     public class RaterFactory
     {
-        public Rater Create(Policy policy, IRatingUpdater ratingUpdater)
+        private readonly IRatingUpdater _ratingUpdater;
+        private readonly ILogger _logger;
+        public RaterFactory(ILogger logger)
+        {
+            _logger = logger;
+        }
+        public Rater Create(Policy policy)
         {
             try
             {
                 return (Rater)Activator.CreateInstance(
                     Type.GetType($"ArdalisRating.{policy.Type}PolicyRater"),
-                    new object[] { ratingUpdater}
+                    new object[] { _logger }
                     );
             }
             catch
             {
-                return new UnknownPolicyRater(ratingUpdater);
+                return new UnknownPolicyRater(_logger);
             }
         }
     }

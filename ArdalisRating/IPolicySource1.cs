@@ -4,9 +4,8 @@ using System.Text;
 
 namespace ArdalisRating
 {
-    public interface ILogger
+    public interface IPolicySource
     {
-        List<string> LoggedMessages { get; }
-        void Log(string message);
+        string GetPolicyFromSource();
     }
 }

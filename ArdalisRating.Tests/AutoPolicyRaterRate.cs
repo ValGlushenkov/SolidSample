@@ -8,6 +8,11 @@ namespace ArdalisRating.Tests
 {
     public class AutoPolicyRaterRate
     {
+        private readonly ILogger _logger;
+        public AutoPolicyRaterRate()
+        {
+            _logger = new ConsoleLogger();
+        }
         [Fact]
         public void LogMakeRequiredMessageGivenPolicyWithoutMake()
         {
@@ -31,7 +36,7 @@ namespace ArdalisRating.Tests
                 Deductible = 250m
             };
             var ratingUpdater = new FakeRatingUpdater();
-            var rater = new AutoPolicyRater(ratingUpdater);
+            var rater = new AutoPolicyRater(_logger);
 
             rater.Rate(policy);
 
