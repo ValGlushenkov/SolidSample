@@ -16,7 +16,7 @@ namespace ArdalisRating.Tests
         {
             _logger = new FakeLogger();
             _policySource = new FakePolicySource();
-            _policySerializer = new PolicySerializer();
+            _policySerializer = new JsonPolicySerializer();
             _raterFactory = new RaterFactory(_logger);
             _engine = new RatingEngine(_logger, _policySource, _policySerializer, _raterFactory);
         }
@@ -62,7 +62,7 @@ namespace ArdalisRating.Tests
         public void ReturnDefaultPolicyFromEmptyJsonString()
         {
             var inputJson = "{}";
-            var serializer = new PolicySerializer();
+            var serializer = new JsonPolicySerializer();
 
             var result = serializer.GetPolicyFromJsonString(inputJson);
 

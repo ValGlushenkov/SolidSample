@@ -35,12 +35,11 @@ namespace ArdalisRating.Tests
                 Make = "BMW",
                 Deductible = 250m
             };
-            var ratingUpdater = new FakeRatingUpdater();
             var rater = new AutoPolicyRater(_logger);
 
-            rater.Rate(policy);
+            decimal rating = rater.Rate(policy);
 
-            Assert.Equal(1000m, ratingUpdater.NewRating.Value);
+            Assert.Equal(1000m, rating);
         }
     }
 }

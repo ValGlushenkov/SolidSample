@@ -12,7 +12,7 @@ namespace ArdalisRating
 
             var engine = new RatingEngine(logger,
                 new FilePolicySource(),
-                new PolicySerializer(),
+                new JsonPolicySerializer(),
                 new RaterFactory(logger)
                 );
             engine.Rate();

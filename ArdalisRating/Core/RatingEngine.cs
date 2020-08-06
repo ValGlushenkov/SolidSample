@@ -15,8 +15,6 @@ namespace ArdalisRating
         private readonly IPolicySerializer _policySerializer;
         private readonly RaterFactory _factory;
 
-        public IRatingContext Context { get; set; } 
-        public IRatingUpdater RatingUpdater { get; set; } = new RatingUpdater();
         public decimal Rating { get; set; }
         public RatingEngine(ILogger logger,
             IPolicySource policySource,
@@ -27,8 +25,6 @@ namespace ArdalisRating
             _policySource = policySource;
             _policySerializer = policySerializer;
             _logger = logger;
-            Context = new DefaultRatingContext(policySource);
-            Context.Engine = this;
             _factory = raterFactory;
         }
 
@@ -48,7 +44,8 @@ namespace ArdalisRating
             var rater = _factory.Create(policy);
             rater.Rate(policy);
 
-            Context.Log("Rating completed.");
+            
+            _logger.Log("Rating completed.");
         }
     }
 }

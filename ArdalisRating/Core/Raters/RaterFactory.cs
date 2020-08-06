@@ -6,7 +6,6 @@ namespace ArdalisRating
 {
     public class RaterFactory
     {
-        private readonly IRatingUpdater _ratingUpdater;
         private readonly ILogger _logger;
         public RaterFactory(ILogger logger)
         {
