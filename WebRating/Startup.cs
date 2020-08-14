@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ArdalisRating;
+using ILogger = ArdalisRating.ILogger;
 
 namespace WebRating
 {
@@ -25,7 +27,16 @@ namespace WebRating
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllers();
+            //throws an error
+            services.AddSingleton<ILogger, FileLogger>();
+
+            services.AddScoped<RatingEngine>();
+            services.AddScoped<StringPolicySource>();
+
+            //Register Swagger
+            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +57,9 @@ namespace WebRating
             {
                 endpoints.MapControllers();
             });
+
+            app.UseOpenApi();
+            app.UseSwaggerUi3();
         }
     }
 }
