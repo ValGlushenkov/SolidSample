@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ArdalisRating;
+using Newtonsoft;
+using Newtonsoft.Json;
 
 namespace WebRating.Controllers
 {
@@ -24,10 +26,11 @@ namespace WebRating.Controllers
         }
 
         [HttpPost]
-        public ActionResult<decimal> Rate([FromBody] string policy)
+        public ActionResult<decimal> Rate([FromBody] Policy policy)
         {
-            _policySource.PolicyString = policy;
-            _ratingEngine.Rate();
+
+            
+            _ratingEngine.Rate(policy);
 
             return _ratingEngine.Rating;
         }

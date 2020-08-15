@@ -31,9 +31,7 @@ namespace ArdalisRating
 
         public void Rate()
         {
-            _logger.Log("Starting rate.");
-
-            _logger.Log("Loading policy.");
+            StartLogging();
 
             // load policy - open file policy.json
             string policyJson = _policySource.GetPolicyFromSource();
@@ -44,8 +42,32 @@ namespace ArdalisRating
             var rater = _factory.Create(policy);
             rater.Rate(policy);
 
-            
+
+            FinishLogging();
+        }
+
+        public void Rate(Policy policy)
+        {
+            StartLogging();
+
+            var rater = _factory.Create(policy);
+            rater.Rate(policy);
+
+            FinishLogging();
+        }
+
+        private void StartLogging()
+        {
+            _logger.Log("Starting rate.");
+
+            _logger.Log("Loading policy.");
+        }
+
+        private void FinishLogging()
+        {
             _logger.Log("Rating completed.");
         }
+
+
     }
 }

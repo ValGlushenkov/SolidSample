@@ -29,8 +29,11 @@ namespace WebRating
         {
 
             services.AddControllers();
-            //throws an error
+            
             services.AddSingleton<ILogger, FileLogger>();
+            services.AddScoped<IPolicySource, StringPolicySource>();
+            services.AddScoped<IPolicySerializer, JsonPolicySerializer>();
+            services.AddScoped<RaterFactory>();
 
             services.AddScoped<RatingEngine>();
             services.AddScoped<StringPolicySource>();

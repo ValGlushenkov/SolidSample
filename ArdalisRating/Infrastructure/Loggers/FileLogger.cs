@@ -12,7 +12,7 @@ namespace ArdalisRating
         {
             using (var stream = File.AppendText("log.txt"))
             {
-                LoggedMessages.Add(message);
+                LoggedMessages?.Add(message);
                 stream.WriteLine(message);
                 stream.Flush();
             }
